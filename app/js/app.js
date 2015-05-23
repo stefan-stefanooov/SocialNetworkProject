@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination', 'ngFileUpload']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/');
 app.constant('pageSize', 5);
@@ -8,8 +8,8 @@ app.constant('pageSize', 5);
 app.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeController'
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
     });
 
     $routeProvider.when('/login', {
@@ -20,5 +20,15 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/register', {
         templateUrl: 'templates/register.html',
         controller: 'RegisterController'
+    });
+
+    $routeProvider.when('/profile/password', {
+        templateUrl: 'templates/change-password.html',
+        controller: 'ChangeUserPasswordController'
+    });
+
+    $routeProvider.when('/profile/password', {
+        templateUrl: 'templates/edit-profile.html',
+        controller: 'EditUserProfileController'
     });
 });

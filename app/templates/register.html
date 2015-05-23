@@ -21,15 +21,20 @@
         <input type="text" id="email" ng-model="userData.email" required />
     </p>
     <p>
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" ng-model="userData.phone" required />
-    </p>
-    <p>
-        <label for="town">Town:</label>
-        <select id="town" ng-model="userData.townId">
-            <option value="null">(None)</option>
-            <option ng-repeat="town in towns" value="{{town.id}}">{{town.name}}</option>
-        </select>
+        <label>Gender:
+            <label>
+                <input type="radio" name="gender" value="male" ng-model="userData.gender">
+                Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female" ng-model="userData.gender">
+                Female
+            </label>
+            <label>
+                <input type="radio" name="gender" value="other" ng-model="userData.gender">
+                Other
+            </label>
+        </label>
     </p>
     <p>
         <a ng-click="register(userData)" class="button">Register</a>

@@ -1,6 +1,8 @@
-Ads<span ng-if="pageTitle"> &ndash; {{pageTitle}}</span>
-
+Social Network<span ng-if="pageTitle"> &ndash; {{pageTitle}}</span>
 <div ng-if="authService.isLoggedIn()" class="user-area">
-  <span>{{authService.getCurrentUser().username}}</span>
+  <span>{{authService.getCurrentUser().userName}}</span>
+  <img ng-src="{{userService.getCurrentUserPreviewData().profileImageData}}}" alt=""/>
+  <a href="#/profile" class="link">Change Profile</a>
+  <a href="#/profile/password" class="link">Change Password</a>
   <a ng-click="logout()" class="link">Logout</a>
 </div>

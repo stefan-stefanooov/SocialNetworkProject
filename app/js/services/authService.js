@@ -32,10 +32,21 @@ app.factory('authService',
                 var request = {
                     method: 'POST',
                     url: baseServiceUrl + '/api/users/Logout',
+                    headers: authService.getAuthHeaders()
+                };
+                $http(request).success(function(data) {
+                    success(data);
+                }).error(error);
+            },
+
+            changeUserPassword: function(userData, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + 'api/me/changepassword',
+                    headers: authService.getAuthHeaders(),
                     data: userData
                 };
                 $http(request).success(function(data) {
-                    sessionStorage['currentUser'] = JSON.stringify(data);
                     success(data);
                 }).error(error);
             },
@@ -43,7 +54,7 @@ app.factory('authService',
             getCurrentUser : function() {
                 var userObject = sessionStorage['currentUser'];
                 if (userObject) {
-                    return JSON.parse(sessionStorage['currentUser']);
+                    return JSON.parse(userObject);
                 }
             },
 
@@ -65,7 +76,7 @@ app.factory('authService',
                 return (currentUser != undefined) && (currentUser.isAdmin);
             },
 
-            getAuthHeaders : function() {
+            getAuthHeaders: function() {
                 var headers = {};
                 var currentUser = this.getCurrentUser();
                 if (currentUser) {
@@ -74,19 +85,10 @@ app.factory('authService',
                 return headers;
             },
 
-            getUserProfile: function(success, error) {
-                var request = {
-                    method: 'GET',
-                    url: baseServiceUrl + '/api/user/profile',
-                    headers: this.getAuthHeaders()
-                };
-                $http(request).success(success).error(error);
-            },
-
-            editUser: function(userData, success, error) {
+            editUserProfile: function(userData, success, error) {
                 var request = {
                     method: 'PUT',
-                    url: baseServiceUrl + '/api/user/profile',
+                    url: baseServiceUrl + '/api/me',
                     data: userData,
                     headers: this.getAuthHeaders()
                 };
@@ -96,7 +98,7 @@ app.factory('authService',
             changePass: function(passData, success, error) {
                 var request = {
                     method: 'PUT',
-                    url: baseServiceUrl + '/api/user/changePassword',
+                    url: baseServiceUrl + '/api/me/changepassword',
                     data: passData,
                     headers: this.getAuthHeaders()
                 };

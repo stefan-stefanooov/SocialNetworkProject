@@ -3,6 +3,39 @@
 app.factory('userService',
     function ($http, baseServiceUrl, authService) {
         return {
+
+            getUserPreviewData: function (userName, success, error) {
+                var request = {
+                    method: 'GET',
+                    url: baseServiceUrl + '/api/users/' + userName + '/preview',
+                    headers: authService.getAuthHeaders()
+                };
+                $http(request).success(function(data) {
+                    sessionStorage['userPreviewData'] = JSON.stringify(data);
+                    success(data);
+                }).error(error);
+            },
+
+            editUserPofile: function (userData, success, error) {
+                var request = {
+                    method: 'PUT',
+                    url: baseServiceUrl + '/api/me/',
+                    headers: authService.getAuthHeaders(),
+                    data: userData
+                };
+                $http(request).success(function(data) {
+                    success(data);
+                }).error(error);
+            },
+
+            getCurrentUserPreviewData : function() {
+                var userObject = sessionStorage['userPreviewData'];
+                if (userObject) {
+                    console.log(userObject);
+                    return JSON.parse(userObject);
+                }
+            },
+
             createNewAd: function (adData, success, error) {
                 var request = {
                     method: 'POST',

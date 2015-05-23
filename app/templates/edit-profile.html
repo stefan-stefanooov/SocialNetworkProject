@@ -1,0 +1,34 @@
+<div class="box">
+    <h2>Edit Profile</h2>
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" ng-model="userData.name" required />
+    </p>
+    <p>
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" ng-model="userData.email" required />
+    </p>
+    <p>
+        <label for="profileImageData">New Password:</label>
+        <input type="password" id="profileImageData" ng-model="userData.profileImageData" required />
+    </p>
+    <p>
+        <label>Gender:
+            <label>
+                <input type="radio" name="gender" value="male" ng-model="userData.gender">
+                Male
+            </label>
+            <label>
+                <input type="radio" name="gender" value="female" ng-model="userData.gender">
+                Female
+            </label>
+            <label>
+                <input type="radio" name="gender" value="other" ng-model="userData.gender">
+                Other
+            </label>
+        </label>
+    </p>
+    <p>
+        <a ng-click="login(userData)" class="button">Save Changes</a>
+    </p>
+</div>
