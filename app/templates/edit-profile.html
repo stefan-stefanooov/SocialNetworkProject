@@ -2,15 +2,13 @@
     <h2>Edit Profile</h2>
     <p>
         <label for="name">Name:</label>
-        <input type="text" id="name" ng-model="userData.name" required />
+        <input type="text" id="name"
+               ng-model="userData.name"  required />
     </p>
     <p>
         <label for="email">E-mail:</label>
-        <input type="text" id="email" ng-model="userData.email" required />
-    </p>
-    <p>
-        <label for="profileImageData">New Password:</label>
-        <input type="password" id="profileImageData" ng-model="userData.profileImageData" required />
+        <input type="text" id="email"
+               ng-model="userData.email" required />
     </p>
     <p>
         <label>Gender:
@@ -28,7 +26,26 @@
             </label>
         </label>
     </p>
+
     <p>
-        <a ng-click="login(userData)" class="button">Save Changes</a>
+        <label for="profile-image">Profile Image:</label>
+        <input type="file" id="profile-image"
+               onchange="angular.element(this).scope().profileImageFileSelected(this)" />
+        <div class="profile-image-box">
+            <img ng-src="{{userData.profileImageData}}" alt=""/>
+        </div>
+    </p>
+
+    <p>
+        <label for="cover-image">Background Image:</label>
+        <input type="file" id="cover-image"
+               onchange="angular.element(this).scope().coverImageFileSelected(this)" />
+    <div class="cover-image-box">
+        <img ng-src="{{userData.coverImageData}}" alt=""/>
+    </div>
+    </p>
+
+    <p>
+        <a ng-click="editProfileSave(userData)" class="button">Save Changes</a>
     </p>
 </div>

@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination', 'ngFileUpload']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/');
 app.constant('pageSize', 5);
@@ -27,7 +27,7 @@ app.config(function ($routeProvider) {
         controller: 'ChangeUserPasswordController'
     });
 
-    $routeProvider.when('/profile/password', {
+    $routeProvider.when('/profile', {
         templateUrl: 'templates/edit-profile.html',
         controller: 'EditUserProfileController'
     });

@@ -6,7 +6,7 @@ app.factory('authService',
             login: function(userData, success, error) {
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + '/api/users/Login',
+                    url: baseServiceUrl + '/api/users/login',
                     data: userData
                 };
                 $http(request).success(function(data) {
@@ -31,19 +31,17 @@ app.factory('authService',
                 delete sessionStorage['currentUser'];
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + '/api/users/Logout',
-                    headers: authService.getAuthHeaders()
+                    url: baseServiceUrl + '/api/users/logout',
+                    headers: this.getAuthHeaders()
                 };
-                $http(request).success(function(data) {
-                    success(data);
-                }).error(error);
+                $http(request).success(data).error(error);
             },
 
             changeUserPassword: function(userData, success, error) {
                 var request = {
                     method: 'PUT',
                     url: baseServiceUrl + 'api/me/changepassword',
-                    headers: authService.getAuthHeaders(),
+                    headers: this.getAuthHeaders(),
                     data: userData
                 };
                 $http(request).success(function(data) {
@@ -83,16 +81,6 @@ app.factory('authService',
                     headers['Authorization'] = 'Bearer ' + currentUser.access_token;
                 }
                 return headers;
-            },
-
-            editUserProfile: function(userData, success, error) {
-                var request = {
-                    method: 'PUT',
-                    url: baseServiceUrl + '/api/me',
-                    data: userData,
-                    headers: this.getAuthHeaders()
-                };
-                $http(request).success(success).error(error);
             },
 
             changePass: function(passData, success, error) {

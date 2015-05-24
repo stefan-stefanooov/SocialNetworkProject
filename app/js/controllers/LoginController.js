@@ -12,13 +12,6 @@ app.controller('LoginController',
                     notifyService.showError("Login failed", err);
                 }
             );
-            userService.getUserPreviewData(authService.getCurrentUser().userName,
-                function success() {
-                },
-                function error(err) {
-                    console.error("Get preview data failed.");
-                }
-            );
         };
     }
 );
