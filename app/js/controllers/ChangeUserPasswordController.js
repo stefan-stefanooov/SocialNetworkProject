@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('ChangeUserPasswordController',
-    function ($scope, $rootScope, $location, authService, userService, notifyService) {
+    function ($scope, $rootScope, $location, authService, notifyService) {
         $scope.changeUserPassword = function(userData) {
             authService.changeUserPassword(userData,
                 function success() {

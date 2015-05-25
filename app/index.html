@@ -25,9 +25,9 @@
 
     <div class='col-md-8' ng-view></div>
 
-    <!--<div class='col-md-2 sidebar' ng-controller="RightSidebarController">-->
-        <!--<div ng-include="'templates/partial/right-sidebar.html'"></div>-->
-    <!--</div>-->
+    <div class='col-md-2 sidebar' ng-controller="RightSidebarController">
+        <div ng-include="'templates/partial/right-sidebar.html'"></div>
+    </div>
 </div>
 
 <footer id="app-footer">
@@ -45,17 +45,21 @@
 <!-- Load app source code: main script, services, controllers, etc. -->
 <script src="js/app.js"></script>
 
-<script src="js/services/socialNetworkServices.js"></script>
+
 <script src="js/services/notifyService.js"></script>
 <script src="js/services/authService.js"></script>
 <script src="js/services/userService.js"></script>
 <script src="js/services/currentUserService.js"></script>
+<script src="js/services/socialNetworkServices.js"></script>
+<script src="js/services/searchBoxService.js"></script>
 
 <script src="js/controllers/AppController.js"></script>
 <script src="js/controllers/HomeController.js"></script>
 <script src="js/controllers/LoginController.js"></script>
 <script src="js/controllers/RegisterController.js"></script>
 <script src="js/controllers/EditUserProfileController.js"></script>
+<script src="js/controllers/ChangeUserPasswordController.js"></script>
+<script src="js/controllers/searchController.js"></script>
 
 </body>
 

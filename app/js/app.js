@@ -31,4 +31,5 @@ app.config(function ($routeProvider) {
         templateUrl: 'templates/edit-profile.html',
         controller: 'EditUserProfileController'
     });
+
 });

@@ -1,9 +1,9 @@
 'use strict';
 
-app.factory('adsService',
+app.factory('postsService',
     function ($resource, baseServiceUrl) {
-        var adsResource = $resource(
-            baseServiceUrl + '/api/ads',
+        var postsResource = $resource(
+            baseServiceUrl + '/api/me/feed',
             null,
             {
                 'getAll': {method:'GET'}
@@ -11,8 +11,8 @@ app.factory('adsService',
         );
 
         return {
-            getAds: function(params, success, error) {
-                return adsResource.getAll(params, success, error);
+            getposts: function(params, success, error) {
+                return postsResource.getAll(params, success, error);
             }
         }
     }
