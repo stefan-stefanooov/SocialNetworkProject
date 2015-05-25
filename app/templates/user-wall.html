@@ -1,0 +1,13 @@
+<div class="users-wall">
+
+    <div class="posts">
+        <ul>
+            <li ng-repeat="post in wall">
+                <img ng-src="{{post.author.profileImageData}}" alt=""/>
+                <span>{{post.data}}</span>
+                <a href="#/users/{{post.author.name}}" class="link">{{persone.name}}</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

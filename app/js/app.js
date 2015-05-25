@@ -8,8 +8,8 @@ app.constant('pageSize', 5);
 app.config(function ($routeProvider) {
 
     $routeProvider.when('/', {
-        templateUrl: 'templates/login.html',
-        controller: 'LoginController'
+        templateUrl: 'templates/news-feed.html',
+        controller: 'NewsFeedController'
     });
 
     $routeProvider.when('/login', {
@@ -32,4 +32,12 @@ app.config(function ($routeProvider) {
         controller: 'EditUserProfileController'
     });
 
+    $routeProvider.when('/users/:username', {
+        templateUrl: 'templates/user-wall.html',
+        controller: 'UserWallController'
+    });
+
+    $routeProvider.otherwise(
+        { redirectTo: '/' }
+    );
 });

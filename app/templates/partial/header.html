@@ -12,7 +12,8 @@ Social Network
           <ul>
               <li ng-repeat="persone in searchUserResult">
                 <img ng-src="{{persone.profileImageData}}" alt=""/>
-                <span>{{persone.name}}</span>
+                <span></span>
+                  <a href="#/users/{{persone.username}}" class="link">{{persone.name}}</a>
               </li>
               </ul>
         </div>

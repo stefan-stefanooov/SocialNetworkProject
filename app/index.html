@@ -19,14 +19,13 @@
 </header>
 
 <div id='app-content'>
-    <div class='col-md-2 sidebar'>
-        <!--<div ng-include="'templates/partial/left-sidebar.html'"></div>-->
-    </div>
-
     <div class='col-md-8' ng-view></div>
 
-    <div class='col-md-2 sidebar' ng-controller="RightSidebarController">
-        <div ng-include="'templates/partial/right-sidebar.html'"></div>
+    <div class='col-md-2 sidebar'
+         ng-if="authService.isLoggedIn()"
+         ng-controller="RightSidebarController">
+
+            <div ng-include="'templates/partial/right-sidebar.html'"></div>
     </div>
 </div>
 
@@ -50,16 +49,19 @@
 <script src="js/services/authService.js"></script>
 <script src="js/services/userService.js"></script>
 <script src="js/services/currentUserService.js"></script>
-<script src="js/services/socialNetworkServices.js"></script>
 <script src="js/services/searchBoxService.js"></script>
+<script src="js/services/userFriendsService.js"></script>
+<script src="js/services/userWallService.js"></script>
 
 <script src="js/controllers/AppController.js"></script>
-<script src="js/controllers/HomeController.js"></script>
+<script src="js/controllers/UserWallController.js"></script>
 <script src="js/controllers/LoginController.js"></script>
 <script src="js/controllers/RegisterController.js"></script>
 <script src="js/controllers/EditUserProfileController.js"></script>
 <script src="js/controllers/ChangeUserPasswordController.js"></script>
 <script src="js/controllers/searchController.js"></script>
+<script src="js/controllers/RightSidebarController.js"></script>
+<script src="js/controllers/newsFeedController.js"></script>
 
 </body>
 
