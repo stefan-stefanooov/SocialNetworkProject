@@ -10,7 +10,6 @@ app.controller('UserWallController',
           'pageSize' : pageSize
       };
       $scope.getUserWallByPages = function() {
-          console.log("controller");
           userWallService.getUserWallByPages(
               $scope.params,
               function success(data) {

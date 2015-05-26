@@ -4,8 +4,9 @@
         <ul>
             <li ng-repeat="post in wall">
                 <img ng-src="{{post.author.profileImageData}}" alt=""/>
-                <span>{{post.data}}</span>
-                <a href="#/users/{{post.author.name}}" class="link">{{persone.name}}</a>
+                <span>{{post.date}}</span>
+                <a href="#/users/{{post.author.username}}" class="link">{{post.author.name}}</a>
+                <br>
             </li>
         </ul>
     </div>
