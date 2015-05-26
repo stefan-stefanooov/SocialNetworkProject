@@ -14,6 +14,9 @@ app.controller('UserWallController',
               $scope.params,
               function success(data) {
                   $scope.wall = data;
+                  if(data.length){
+                      $scope.wallOwner = data[0].wallOwner;
+                  }
                   console.log(data);
               },
               function error(err) {

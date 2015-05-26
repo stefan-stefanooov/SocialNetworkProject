@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('LoginController',
-    function ($scope, $location, authService, currentUserService, notifyService) {
+    function ($scope, $location, authService, currentUserService, friendRequestService, notifyService) {
         $scope.login = function(userData) {
             authService.login(userData,
                 function success(data) {
@@ -12,6 +12,14 @@ app.controller('LoginController',
                         },
                         function error(err) {
                             notifyService.showError("Profile load failed", err);
+                        }
+                    );
+                    friendRequestService.getFriendRequests(
+                        function success(data) {
+                            $scope.friendRequests = data;
+                        },
+                        function error(err) {
+                            notifyService.showError("Get Friend Request failed", err);
                         }
                     );
                     $location.path("/");
