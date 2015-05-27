@@ -1,10 +1,20 @@
 Social Network
 <div ng-if="authService.isLoggedIn()" class="user-area">
-  <div class="header-profile-picture"></div>
-  <span>{{authService.getCurrentUser().userName}}</span>
-  <a href="#/profile" class="link">Change Profile</a>
-  <a href="#/profile/password" class="link">Change Password</a>
-  <a ng-click="logout()" class="link">Logout</a>
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="header-profile-picture"></li>
+            <li><span>{{authService.getCurrentUser().userName}}</span></li>
+            <li class="dropdown" ng-controller="GetFriendRequestsController">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{friendRequests.length}}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                </ul>
+            </li>
+            <li><a href="#/profile" class="link">Change Profile</a></li>
+            <li><a href="#/profile/password" class="link">Change Password</a></li>
+            <li>  <a ng-click="logout()" class="link">Logout</a></li>
+        </ul>
+    </div>
 
   <div class="searchBox" ng-controller="SearchController">
     <input type="text" ng-model="searchUser"  ng-change="searchParamschange()" placeholder="Search..."/>

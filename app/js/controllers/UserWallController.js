@@ -17,7 +17,6 @@ app.controller('UserWallController',
                   if(data.length){
                       $scope.wallOwner = data[0].wallOwner;
                   }
-                  console.log(data);
               },
               function error(err) {
                   notifyService.showError("Cannot load user wall", err);

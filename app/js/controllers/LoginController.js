@@ -14,20 +14,14 @@ app.controller('LoginController',
                             notifyService.showError("Profile load failed", err);
                         }
                     );
-                    friendRequestService.getFriendRequests(
-                        function success(data) {
-                            $scope.friendRequests = data;
-                        },
-                        function error(err) {
-                            notifyService.showError("Get Friend Request failed", err);
-                        }
-                    );
-                    $location.path("/");
+                    $location.path("/")
                 },
+
                 function error(err) {
                     notifyService.showError("Login failed", err);
                 }
             );
         };
+
     }
 );

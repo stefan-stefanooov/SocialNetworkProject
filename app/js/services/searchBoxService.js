@@ -4,6 +4,9 @@ app.factory('searchBoxService',
     function ($http, baseServiceUrl, authService) {
         return {
             searchUserByName: function (searchUser, success, error) {
+                if(searchUser == ""){
+                    $(".searchResults").html("");
+                }
                 var params ={
                     searchTerm: searchUser
                 }

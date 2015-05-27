@@ -34,7 +34,7 @@ app.factory('authService',
                     url: baseServiceUrl + '/api/users/logout',
                     headers: this.getAuthHeaders()
                 };
-                $http(request).success(data).error(error);
+                $http(request);
             },
 
             changeUserPassword: function(userData, success, error) {
