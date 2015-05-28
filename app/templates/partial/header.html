@@ -7,14 +7,17 @@ Social Network
             <li class="dropdown" ng-controller="GetFriendRequestsController">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{friendRequests.length}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-
+                    <li ng-repeat="request in friendRequests">
+                        <img ng-src="{{request.user.profileImageData}}" alt=""/>
+                        <span>{{request.user.name}}</span>
+                        <input type='button' value='Accept' class='accept-button' ng-click='acceptFriendRequest(request.id)'>
+                        <input type='button' value='Reject' class='reject-button' ng-click='rejectFriendRequest(request.id)'>
+                    </li>
                 </ul>
             </li>
             <li><a href="#/profile" class="link">Change Profile</a></li>
             <li><a href="#/profile/password" class="link">Change Password</a></li>
-            <li>  <a ng-click="logout()" class="link">Logout</a></li>
-        </ul>
-    </div>
+            <li><a ng-click="logout()" class="link">Logout</a></li>
 
   <div class="searchBox" ng-controller="SearchController">
     <input type="text" ng-model="searchUser"  ng-change="searchParamschange()" placeholder="Search..."/>

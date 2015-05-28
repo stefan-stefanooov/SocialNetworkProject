@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('AppController',
-    function ($scope, $location, authService, userService, currentUserService, notifyService) {
+    function ($scope, $location, authService, userService, currentUserService, notifyService, friendRequestService) {
 		// Put the authService & userService in the $scope to make them accessible from all screens
         $scope.authService = authService;
         $scope.userService = userService;
@@ -18,5 +18,6 @@ app.controller('AppController',
             notifyService.showInfo("Change successful");
             $location.path('/');
         };
+
     }
 );
