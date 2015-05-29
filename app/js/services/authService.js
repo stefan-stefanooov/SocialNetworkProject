@@ -56,22 +56,15 @@ app.factory('authService',
                 }
             },
 
-            isAnonymous : function() {
-                return sessionStorage['currentUser'] == undefined;
+            getCurrentUserProfilePicture : function() {
+                var userObject = sessionStorage['userLoginData'];
+                if (userObject) {
+                    return JSON.parse(userObject);
+                }
             },
 
             isLoggedIn : function() {
                 return sessionStorage['currentUser'] != undefined;
-            },
-
-            isNormalUser : function() {
-                var currentUser = this.getCurrentUser();
-                return (currentUser != undefined) && (!currentUser.isAdmin);
-            },
-
-            isAdmin : function() {
-                var currentUser = this.getCurrentUser();
-                return (currentUser != undefined) && (currentUser.isAdmin);
             },
 
             getAuthHeaders: function() {

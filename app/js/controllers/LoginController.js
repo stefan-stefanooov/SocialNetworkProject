@@ -8,7 +8,8 @@ app.controller('LoginController',
                     notifyService.showInfo("Login successful");
                     currentUserService.getDataAboutMe(
                         function success(data) {
-                            $(".header-profile-picture").html("<img src='" + data.profileImageData + "'>");
+                            sessionStorage['userLoginData'] = JSON.stringify(data);
+                            console.log(sessionStorage['userLoginData']);
                         },
                         function error(err) {
                             notifyService.showError("Profile load failed", err);

@@ -21,6 +21,8 @@ app.controller('UserWallController',
                           function success(data) {
                               $scope.wallOwner = data;
                               $scope.isUserFriend = data.isFriend;
+                              $scope.isNotUserFriend = !data.isFriend;
+
                           },
                           function error(err) {
                               notifyService.showError("Friend request failed: {0}", err);

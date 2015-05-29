@@ -6,9 +6,9 @@
             <div class="panel-body">
                 <p class="lead">{{wallOwner.name}}</p>
                 <div ng-if="isUserFriend" >
-                    <div>Friend</div>
+                    <input type='button' value='Friend' class='friend-request-button' disabled>
                 </div>
-                <div ng-if="isUserFriend">
+                <div ng-if="isNotUserFriend">
                     <input type='button' value='Friend Request' class='friend-request-button' ng-click="sendFriendRequest(wallOwner.username)">
                 </div>
 
@@ -17,23 +17,21 @@
     </div>
 
 
-    <div class="well" ng-if="isFriend">
+    <div class="well post-post" ng-if="isUserFriend" ng-controller="PostController">
         <form class="form-horizontal" role="form">
             <h4>What's New</h4>
             <div class="form-group" style="padding:14px;">
-                <textarea class="form-control" placeholder="Update your status"></textarea>
+                <textarea class="form-control" placeholder="Update your status" ng-model="postMessage"></textarea>
             </div>
-            <button class="btn btn-primary pull-right" type="button">Post</button>
+            <button class="btn btn-primary pull-right" type="button" ng-click="addPost(postMessage)">Post</button>
             <ul class="list-inline">
-                <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
-                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+                <li><br></li>
             </ul>
         </form>
     </div>
 
 
-    <div class="posts">
+    <div class="posts" ng-if="isUserFriend">
         <ul class="nostyleUL">
             <li ng-repeat="post in wall">
                 <div class="post">
