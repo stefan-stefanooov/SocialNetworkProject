@@ -3,8 +3,6 @@
 app.controller('UserWallController',
    function ($scope, notifyService, userWallService, userFriendsService, userService, pageSize, $routeParams) {
 
-       $scope.isFriend = userFriendsService.isCurrentUserFriendWith($routeParams.username);
-
        $scope.params = {
           'startPage' : 1,
           'pageSize' : pageSize
@@ -17,14 +15,25 @@ app.controller('UserWallController',
                   if(data.length){
                       $scope.wallOwner = data[0].wallOwner;
                   }
+                  else{
+                      userService.getUserPreviewData(
+                          $routeParams.username,
+                          function success(data) {
+                              $scope.wallOwner = data;
+                              $scope.isUserFriend = data.isFriend;
+                          },
+                          function error(err) {
+                              notifyService.showError("Friend request failed: {0}", err);
+                          }
+                      );
+                  }
               },
-              function error(err) {
-                  notifyService.showError("Cannot load user wall", err);
+              function error(data) {
+                  notifyService.showError(data.message);
               }
           );
       };
 
       $scope.getUserWallByPages();
-
    }
 );

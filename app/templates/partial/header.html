@@ -1,10 +1,37 @@
-Social Network
-<div ng-if="authService.isLoggedIn()" class="user-area">
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="header-profile-picture"></li>
-            <li><span>{{authService.getCurrentUser().userName}}</span></li>
-            <li class="dropdown" ng-controller="GetFriendRequestsController">
+<!-- top nav -->
+<div ng-if="authService.isLoggedIn()" class="navbar navbar-blue navbar-static-top">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand logo header-profile-picture">s</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+        <form class="navbar-form navbar-left">
+            <div class="input-group input-group-sm" style="max-width:360px;">
+                <div class="searchBox" ng-controller="SearchController">
+                    <input type="text" ng-model="searchUser"  ng-change="searchParamschange()" placeholder="Search..."/>
+                    <div class="searchResults">
+                        <ul>
+                            <li ng-repeat="persone in searchUserResult">
+                                <img ng-src="{{persone.profileImageData}}" alt=""/>
+                                <span></span>
+                                <a href="#/users/{{persone.username}}" class="link">{{persone.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#"><i class="glyphicon glyphicon-home"></i> {{authService.getCurrentUser().userName}}</a>
+            </li>
+
+            <li class="dropdown" class="badge" ng-controller="GetFriendRequestsController">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{friendRequests.length}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li ng-repeat="request in friendRequests">
@@ -18,17 +45,7 @@ Social Network
             <li><a href="#/profile" class="link">Change Profile</a></li>
             <li><a href="#/profile/password" class="link">Change Password</a></li>
             <li><a ng-click="logout()" class="link">Logout</a></li>
-
-  <div class="searchBox" ng-controller="SearchController">
-    <input type="text" ng-model="searchUser"  ng-change="searchParamschange()" placeholder="Search..."/>
-        <div class="searchResults">
-          <ul>
-              <li ng-repeat="persone in searchUserResult">
-                <img ng-src="{{persone.profileImageData}}" alt=""/>
-                <span></span>
-                  <a href="#/users/{{persone.username}}" class="link">{{persone.name}}</a>
-              </li>
-              </ul>
-        </div>
-  </div>
+        </ul>
+    </nav>
 </div>
+<!-- /top nav -->

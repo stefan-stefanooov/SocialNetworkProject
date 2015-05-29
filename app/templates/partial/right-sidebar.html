@@ -1,8 +1,14 @@
-    <div class="box">
-        <div>Friends: {{userFriendsList}} total</div>
-        <ul class="sidebar-friends">
-            <li ng-repeat="persone in userFriendsList">
-                <img ng-src="{{persone.profileImageData}}" alt="{{persone.name}}"/>
-            </li>
-        </ul>
+    <div class="pull-left sidebar-friends" >
+        <table >
+            <tr>
+                <th>Friends: {{userFriendsList.length}} total</th>
+            </tr>
+            <tr ng-repeat="persone in userFriendsList">
+                <td>
+                    <a href="#/users/{{persone.username}}" class="link">
+                        <img ng-src="{{persone.profileImageData}}" alt="{{persone.name}}"/>
+                    </a>
+                </td>
+            </tr>
+        </table>
     </div>

@@ -9,7 +9,7 @@ app.factory('friendRequestService',
                     url: baseServiceUrl + '/api/me/requests/' + userName,
                     headers: authService.getAuthHeaders()
                 };
-                $http(request).success(data).error(error);
+                $http(request).success(success).error(error);
             },
 
             getFriendRequests: function (success, error) {

@@ -1,46 +1,107 @@
 <div class="users-wall">
 
-    <div class="header" ng-controller="FriendRequestController">
-        <img ng-src="{{wallOwner.profileImageData}}" alt="{{wallOwner.name}}"/>
-        <div class="friend-request-button" ng-click="sendFriendRequest(wallOwner.username)">Friend Request</div>
+    <div class="header" ng-controller="UserWallController">
+        <div class="panel panel-default userInfowall ">
+            <div class="panel-thumbnail"><img ng-src="{{wallOwner.profileImageData}}" class="img-responsive"></div>
+            <div class="panel-body">
+                <p class="lead">{{wallOwner.name}}</p>
+                <div ng-if="isUserFriend" >
+                    <div>Friend</div>
+                </div>
+                <div ng-if="isUserFriend">
+                    <input type='button' value='Friend Request' class='friend-request-button' ng-click="sendFriendRequest(wallOwner.username)">
+                </div>
+
+            </div>
+        </div>
     </div>
 
+
+    <div class="well" ng-if="isFriend">
+        <form class="form-horizontal" role="form">
+            <h4>What's New</h4>
+            <div class="form-group" style="padding:14px;">
+                <textarea class="form-control" placeholder="Update your status"></textarea>
+            </div>
+            <button class="btn btn-primary pull-right" type="button">Post</button>
+            <ul class="list-inline">
+                <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
+                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                <li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li>
+            </ul>
+        </form>
+    </div>
+
+
     <div class="posts">
-        <ul>
+        <ul class="nostyleUL">
             <li ng-repeat="post in wall">
                 <div class="post">
-                    <img ng-src="{{post.author.profileImageData}}" alt=""/>
-                    <span>{{post.date}}</span>
-                    <a href="#/users/{{post.author.username}}" class="link">{{post.author.name}}</a>
+                    <!-- main col right -->
+                    <div >
 
-                    <div ng-if="post.liked">{{post.likesCount}}</div>
-                    <img src="../app/img/like.png" alt="likes"/>
-                    <a href="#" class="link" ng-click="">Like</a>
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><a href="#" class="pull-right"><span>{{post.date}}</span></a>
+                                <h4><a href="#/users/{{post.author.username}}" class="link">{{post.author.name}}</a></h4></div>
+                            <div class="panel-body">
+                                <img ng-src="{{post.author.profileImageData}}" class="img-circle pull-right" alt=""/>
+                                <hr>
 
-                    <div>{{post.totalCommentsCount}}</div>
-                    <img src="../app/img/comment.png" alt="comments"/>
-                    <a href="#" class="comment" ng-click="">Comment</a>
+                                <p>{{post.postContent}}</p>
 
-                    <div class="comments">
-                        <ul>
-                            <li ng-repeat="comment in post.comments">
-                                <div class="comment">
-                                    <img ng-src="{{comment.author.profileImageData}}" alt=""/>
-                                    <span>{{comment.date}}</span>
-                                    <a href="#/users/{{comment.author.username}}" class="link">{{comment.author.name}}</a>
-                                    <span>{{comment.commentContent}}</span>
-
-                                    <div ng-if="comment.liked">{{comment.likesCount}}</div>
+                                <hr>
+                                <div ng-if="post.liked">{{post.likesCount}}
                                     <img src="../app/img/like.png" alt="likes"/>
                                     <a href="#" class="link" ng-click="">Like</a>
-                                    <div>{{comment.likesCount}}</div>
+                                </div>
+
+                                <div>{{post.totalCommentsCount}}
                                     <img src="../app/img/comment.png" alt="comments"/>
                                     <a href="#" class="comment" ng-click="">Comment</a>
                                 </div>
-                            </li>
-                        </ul>
+                                <form>
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+
+                                            <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                                        </div>
+
+
+
+                                        <input type="text" class="form-control" placeholder="Add a comment..">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4>Comments</h4></div>
+                            <div class="comments">
+                                <ul>
+                                    <li ng-repeat="comment in post.comments">
+                                        <div class="comment">
+                                            <img ng-src="{{comment.author.profileImageData}}" alt=""/>
+                                            <span>{{comment.date}}</span>
+                                            <a href="#/users/{{comment.author.username}}" class="link">{{comment.author.name}}</a>
+                                            <span>{{comment.commentContent}}</span>
+
+                                            <div ng-if="comment.liked">{{comment.likesCount}}</div>
+                                            <img src="../app/img/like.png" alt="likes"/>
+                                            <a href="#" class="link" ng-click="">Like</a>
+                                            <div>{{comment.likesCount}}</div>
+                                            <img src="../app/img/comment.png" alt="comments"/>
+                                            <a href="#" class="comment" ng-click="">Comment</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
-                <br>
+
+          <br>
                 </div>
             </li>
         </ul>

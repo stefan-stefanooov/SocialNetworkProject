@@ -10,10 +10,6 @@ app.factory('userFriendsService',
                     headers: authService.getAuthHeaders()
                 };
                 $http(request).success(success).error(error);
-            },
-
-            isCurrentUserFriendWith: function (persone) {
-                return false;
             }
         }
     }

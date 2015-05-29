@@ -2,9 +2,16 @@
 
 app.controller('RightSidebarController',
     function ($scope, $rootScope, $location, $route, userFriendsService, notifyService) {
-        $scope.loadUserFrinds = function() {
+        $scope.loadUserFriends = function() {
             userFriendsService.getCurrentUsersFriends(
                 function success(data) {
+                    var i;
+                    for(i = 0 ; i < data.length; i++) {
+                        if(!data[i].profileImageData){
+                            data[i].profileImageData
+                                = "http://www.airsoftsociety.com//images/no_image.jpg";
+                        }
+                    }
                     $scope.userFriendsList = data;
                 },
                 function error(err) {
@@ -12,5 +19,6 @@ app.controller('RightSidebarController',
                 }
             );
         };
+        $scope.loadUserFriends();
     }
 );
