@@ -27,9 +27,12 @@ app.controller('UserWallController',
            $scope.friendsLimit = undefined;
        };
 
-
        $scope.showHideCommentInput = function() {
            $scope.checked = !$scope.checked;
+       };
+
+       $scope.showHideEditInput = function() {
+           $scope.checkedEdit = !$scope.checkedEdit;
        };
 
       $scope.getUserWallByPages = function() {

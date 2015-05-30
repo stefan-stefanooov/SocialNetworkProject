@@ -37,7 +37,6 @@
                 <div class="post">
                     <!-- main col right -->
                     <div >
-
                         <div class="panel panel-default">
                             <div class="panel-heading"><a href="#" class="pull-right"><span>{{post.date}}</span></a>
                                 <h4><a href="#/users/{{post.author.username}}" class="link">{{post.author.name}}</a></h4></div>
@@ -53,15 +52,24 @@
                                 <div>{{post.totalCommentsCount}}
                                     <img src="../app/img/comment.png" alt="comments"/>
                                     <a href="" class="comment" ng-click="showHideCommentInput()">Comment</a>
+                                    <a href="" class="edit"  ng-click="showHideEditInput()">Edit</a>
                                     <a href="" class="delete" ng-controller="deletePostController" ng-click="deletePost(post.id)">Delete</a>
                                 </div>
-                                <form>
+                                <form class="Comment">
                                     <div class="input-group" ng-if="checked">
                                         <div class="input-group-btn" ng-controller="addCommentController">
 
                                             <button class="btn btn-default" ng-click="addComment(post.id)"><i class="glyphicon glyphicon-share"></i></button>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Add a comment.." ng-model="commentContent">
+                                    </div>
+                                </form>
+                                <form class="EditPost">
+                                    <div class="input-group" ng-if="checkedEdit">
+                                        <div class="input-group-btn" ng-controller="editPostController">
+                                            <button class="btn btn-default" ng-click="editPost(post.id)"><i class="glyphicon glyphicon-share"></i></button>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Edit a comment.." ng-model="postEditMessage">
                                     </div>
                                 </form>
                             </div>
@@ -84,6 +92,7 @@
                                             <div>{{comment.likesCount}}</div>
                                             <img src="../app/img/comment.png" alt="comments"/>
                                             <a href="#" class="comment" ng-click="">Comment</a>
+                                            <a href="" class="delete" ng-controller="deleteCommentController" ng-click="deleteComment(post.id, comment.id)">Delete</a>
                                         </div>
                                     </li>
                                 </ul>
