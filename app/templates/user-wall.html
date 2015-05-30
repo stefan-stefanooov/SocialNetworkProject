@@ -44,35 +44,28 @@
                             <div class="panel-body">
                                 <img ng-src="{{post.author.profileImageData}}" class="img-circle pull-right" alt=""/>
                                 <hr>
-
                                 <p>{{post.postContent}}</p>
-
                                 <hr>
                                 <div ng-if="post.liked">{{post.likesCount}}
                                     <img src="../app/img/like.png" alt="likes"/>
                                     <a href="#" class="link" ng-click="">Like</a>
                                 </div>
-
                                 <div>{{post.totalCommentsCount}}
                                     <img src="../app/img/comment.png" alt="comments"/>
-                                    <a href="#" class="comment" ng-click="">Comment</a>
+                                    <a href="" class="comment" ng-click="showHideCommentInput()">Comment</a>
+                                    <a href="" class="delete" ng-controller="deletePostController" ng-click="deletePost(post.id)">Delete</a>
                                 </div>
                                 <form>
-                                    <div class="input-group">
-                                        <div class="input-group-btn">
+                                    <div class="input-group" ng-if="checked">
+                                        <div class="input-group-btn" ng-controller="addCommentController">
 
-                                            <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                                            <button class="btn btn-default" ng-click="addComment(post.id)"><i class="glyphicon glyphicon-share"></i></button>
                                         </div>
-
-
-
-                                        <input type="text" class="form-control" placeholder="Add a comment..">
+                                        <input type="text" class="form-control" placeholder="Add a comment.." ng-model="commentContent">
                                     </div>
                                 </form>
-
                             </div>
                         </div>
-
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4>Comments</h4></div>
@@ -98,7 +91,6 @@
                         </div>
 
                     </div>
-
           <br>
                 </div>
             </li>

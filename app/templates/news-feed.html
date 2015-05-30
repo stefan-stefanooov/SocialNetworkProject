@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<div class="posts">
+    <ul class="nostyleUL">
+        <li ng-repeat="post in newsFeedData">
+            <div class="post">
+                <div >
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><a href="#" class="pull-right"><span>{{post.date}}</span></a>
+                            <h4><a href="#/users/{{post.author.username}}" class="link">{{post.author.name}}</a></h4></div>
+                        <div class="panel-body">
+                            <img ng-src="{{post.author.profileImageData}}" class="img-circle pull-right" alt=""/>
+                            <hr>
+                            <p>{{post.postContent}}</p>
+                            <hr>
+                            <div ng-if="post.liked">{{post.likesCount}}
+                                <img src="../app/img/like.png" alt="likes"/>
+                                <a href="#" class="link" ng-click="">Like</a>
+                            </div>
+                            <div>{{post.totalCommentsCount}}
+                                <img src="../app/img/comment.png" alt="comments"/>
+                                <a href="" class="comment" ng-click="showHideCommentInput()">Comment</a>
+                                <a href="" class="delete" ng-controller="deletePostController" ng-click="deletePost(post.id)">Delete</a>
+                            </div>
+                            <form >
+                                <div class="input-group" ng-if="checked">
+                                    <div class="input-group-btn" ng-controller="addCommentController">
+                                        <button class="btn btn-default" ng-click="addComment(post.id)"><i class="glyphicon glyphicon-share"></i></button>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Add a comment.." ng-model="commentContent">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Comments</h4></div>
+                        <div class="comments">
+                            <ul>
+                                <li ng-repeat="comment in post.comments">
+                                    <div class="comment">
+                                        <img ng-src="{{comment.author.profileImageData}}" alt=""/>
+                                        <span>{{comment.date}}</span>
+                                        <a href="#/users/{{comment.author.username}}" class="link">{{comment.author.name}}</a>
+                                        <span>{{comment.commentContent}}</span>
 
-</body>
-</html>
+                                        <div ng-if="comment.liked">{{comment.likesCount}}</div>
+                                        <img src="../app/img/like.png" alt="likes"/>
+                                        <a href="#" class="link" ng-click="">Like</a>
+                                        <div>{{comment.likesCount}}</div>
+                                        <img src="../app/img/comment.png" alt="comments"/>
+                                        <a href="#" class="comment" ng-click="">Comment</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </li>
+    </ul>
+</div>

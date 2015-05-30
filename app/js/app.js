@@ -4,6 +4,8 @@ var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.paginati
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net');
 app.constant('pageSize', 5);
+app.constant('commentLimit',3);
+app.constant('friendsLimit',6);
 
 app.config(function ($routeProvider) {
 

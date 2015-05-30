@@ -9,7 +9,6 @@ app.controller('LoginController',
                     currentUserService.getDataAboutMe(
                         function success(data) {
                             sessionStorage['userLoginData'] = JSON.stringify(data);
-                            console.log(sessionStorage['userLoginData']);
                         },
                         function error(err) {
                             notifyService.showError("Profile load failed", err);
