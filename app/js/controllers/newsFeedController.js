@@ -53,6 +53,10 @@ app.controller('NewsFeedController',
             $scope.checkedEdit = !$scope.checkedEdit;
         };
 
+        $scope.showHideEditCommentInput = function() {
+            $scope.checkedEditComment = !$scope.checkedEditComment;
+        };
+
         $scope.authorisationCheck();
         $scope.getNewsFeed();
     }

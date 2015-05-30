@@ -92,7 +92,18 @@
                                             <div>{{comment.likesCount}}</div>
                                             <img src="../app/img/comment.png" alt="comments"/>
                                             <a href="#" class="comment" ng-click="">Comment</a>
+                                            <a href="" class="edit"  ng-click="showHideCommentInput()">Edit</a>
                                             <a href="" class="delete" ng-controller="deleteCommentController" ng-click="deleteComment(post.id, comment.id)">Delete</a>
+
+                                            <form class="EditPost">
+                                                <div class="input-group" ng-if="checkedEditComment">
+                                                    <div class="input-group-btn" ng-controller="editCommentController">
+                                                        <button class="btn btn-default" ng-click="editComment(post.id)"><i class="glyphicon glyphicon-share"></i></button>
+                                                    </div>
+                                                    <input type="text" class="form-control" placeholder="Edit a comment.." ng-model="postEditMessage">
+                                                </div>
+                                            </form>
+
                                         </div>
                                     </li>
                                 </ul>
@@ -107,3 +118,6 @@
     </div>
 
 </div>
+
+
+

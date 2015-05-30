@@ -35,6 +35,10 @@ app.controller('UserWallController',
            $scope.checkedEdit = !$scope.checkedEdit;
        };
 
+       $scope.showHideEditCommentInput = function() {
+           $scope.checkedEditComment = !$scope.checkedEditComment;
+       };
+
       $scope.getUserWallByPages = function() {
           userWallService.getUserWallByPages(
               $scope.params,
