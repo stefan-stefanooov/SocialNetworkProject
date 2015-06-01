@@ -40,7 +40,7 @@ app.factory('authService',
             changeUserPassword: function(userData, success, error) {
                 var request = {
                     method: 'PUT',
-                    url: baseServiceUrl + 'api/me/changepassword',
+                    url: baseServiceUrl + '/api/me/changepassword',
                     headers: this.getAuthHeaders(),
                     data: userData
                 };
