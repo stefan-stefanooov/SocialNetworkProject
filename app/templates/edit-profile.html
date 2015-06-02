@@ -1,51 +1,51 @@
-<div class="box">
-    <h2>Edit Profile</h2>
-    <p>
-        <label for="name">Name:</label>
-        <input type="text" id="name"
-               ng-model="userData.name"  required />
-    </p>
-    <p>
-        <label for="email">E-mail:</label>
-        <input type="text" id="email"
-               ng-model="userData.email" required />
-    </p>
-    <p>
-        <label>Gender:
-            <label>
-                <input type="radio" name="gender" value="male" ng-model="userData.gender">
-                Male
-            </label>
-            <label>
-                <input type="radio" name="gender" value="female" ng-model="userData.gender">
-                Female
-            </label>
-            <label>
-                <input type="radio" name="gender" value="other" ng-model="userData.gender">
-                Other
-            </label>
-        </label>
-    </p>
+<div id="wrapper">
+    <div id="login">
+        <form  autocomplete="on">
+            <h2>Edit Profile</h2>
+            <p>
+                <label for="name" class="youpasswd" data-icon="p"> Name </label>
+                <input id="name" name="name" ng-model="userData.name" required="required" type="text" placeholder="Name" />
+            </p>
+            <p>
+                <label for="email" class="youpasswd" data-icon="p"> E-mail </label>
+                <input id="email" name="email" ng-model="userData.email" required="required" type="text" placeholder="New password" />
+            </p>
+            <p>
+                <label>Gender:
+                    <label>
+                        <input type="radio" class="default-radio" name="gender" value="male" ng-model="userData.gender">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" ng-model="userData.gender">
+                        Female
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="other" ng-model="userData.gender">
+                        Other
+                    </label>
+                </label>
+            </p>
+            <p>
+                <label for="profile-image">Profile Image:</label>
+                <input type="file" id="profile-image"
+                           onchange="angular.element(this).scope().profileImageFileSelected(this)" />
+                <div class="profile-image-box">
+                    <img ng-src="{{userData.profileImageData}}" alt=""/>
+                </div>
+            </p>
 
-    <p>
-        <label for="profile-image">Profile Image:</label>
-        <input type="file" id="profile-image"
-               onchange="angular.element(this).scope().profileImageFileSelected(this)" />
-        <div class="profile-image-box">
-            <img ng-src="{{userData.profileImageData}}" alt=""/>
-        </div>
-    </p>
-
-    <p>
-        <label for="cover-image">Background Image:</label>
-        <input type="file" id="cover-image"
-               onchange="angular.element(this).scope().coverImageFileSelected(this)" />
-    <div class="cover-image-box">
-        <img ng-src="{{userData.coverImageData}}" alt=""/>
+            <p>
+                <label for="cover-image">Background Image:</label>
+                <input type="file" id="cover-image"
+                           onchange="angular.element(this).scope().coverImageFileSelected(this)" />
+                <div class="cover-image-box">
+                    <img ng-src="{{userData.coverImageData}}" alt=""/>
+                </div>
+            </p>
+            <p class="change_link">
+                <a ng-click="editProfileSave(userData)">Save Changes</a>
+            </p>
+        </form>
     </div>
-    </p>
-
-    <p>
-        <a ng-click="editProfileSave(userData)" class="button">Save Changes</a>
-    </p>
 </div>

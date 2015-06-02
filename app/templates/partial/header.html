@@ -25,11 +25,11 @@
                 </form>
             </li>
             <li>
-                <a href="#"><i class="glyphicon glyphicon-home"></i> {{authService.getCurrentUser().userName}}</a>
+                <a href=""><i class="glyphicon glyphicon-home"></i> {{authService.getCurrentUser().userName}}</a>
             </li>
 
             <li class="dropdown" class="badge" ng-controller="GetFriendRequestsController">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{friendRequests.length}}<span class="caret"></span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">{{friendRequests.length}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li ng-repeat="request in friendRequests">
                         <img ng-src="{{request.user.profileImageData}}" alt=""/>
@@ -39,7 +39,7 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#/profile" class="link">Change Profile</a></li>
+            <li><a href="#/profile" class="link">Edit Profile</a></li>
             <li><a href="#/profile/password" class="link">Change Password</a></li>
             <li><a ng-click="logout()" class="link">Logout</a></li>
         </ul>
