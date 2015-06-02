@@ -48,6 +48,7 @@ app.controller('UserWallController',
                       $scope.wallOwner = data[0].wallOwner;
                       $scope.isUserFriend = data[0].wallOwner.isFriend;
                       $scope.isNotUserFriend = !$scope.isUserFriend;
+                      console.log(data);
                   }
                   else{
                       userService.getUserPreviewData(

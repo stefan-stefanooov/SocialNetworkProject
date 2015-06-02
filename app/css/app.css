@@ -38,10 +38,6 @@ body{
 	width: 36%;
 }
 
-.userInfowall{
-	width: 40%;
-}
-
 .sidebar-friends{
 	float: right;
 }
@@ -113,6 +109,10 @@ hr {
 
 .full{
 	padding-top:70px;
+}
+
+div.userInfowall{
+	back
 }
 
 .box {
