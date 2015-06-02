@@ -6,6 +6,7 @@ app.controller('SearchController',
             if($scope.searchUser){
                 searchBoxService.searchUserByName($scope.searchUser,
                     function success(data) {
+                        $("ul.results").show();
                         $scope.searchUserResult = data;
                     },
                     function error(err) {

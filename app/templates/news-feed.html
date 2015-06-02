@@ -11,18 +11,14 @@
                             <hr>
                             <p>{{post.postContent}}</p>
                             <hr>
+                            {{post.likesCount}}
                             <img src="../app/img/like.png" alt="likes"/>
                             <a href="#" class="link" ng-click="">Like</a>
-                            <div ng-if="post.liked">{{post.likesCount}}
-                                <img src="../app/img/like.png" alt="likes"/>
-                                <a href="#" class="link" ng-click="">Like</a>
-                            </div>
                             <div>{{post.totalCommentsCount}}
                                 <img src="../app/img/comment.png" alt="comments"/>
                                 <a href="" class="comment" ng-click="showHideCommentInput()">Comment</a>
                                 <a href="" class="edit"  ng-click="showHideEditInput()">Edit</a>
                                 <a href="" class="delete" ng-controller="deletePostController" ng-click="deletePost(post.id)">Delete</a>
-
                             </div>
                             <form class="Comment">
                                 <div class="input-group" ng-if="checked">
@@ -49,28 +45,29 @@
                             <ul>
                                 <li ng-repeat="comment in post.comments">
                                     <div class="comment">
+                                        <hr>
                                         <img ng-src="{{comment.author.profileImageData}}" alt=""/>
-                                        <span>{{comment.date}}</span>
-                                        <a href="#/users/{{comment.author.username}}" class="link">{{comment.author.name}}</a>
-                                        <span>{{comment.commentContent}}</span>
 
+                                        <a href="#/users/{{comment.author.username}}" class="link">{{comment.author.name}}</a>
+                                        <p>{{comment.commentContent}}</p>
                                         <div ng-if="comment.liked">{{comment.likesCount}}</div>
+                                        <span>{{comment.likesCount}}</span>
                                         <img src="../app/img/like.png" alt="likes"/>
                                         <a href="#" class="link" ng-click="">Like</a>
-                                        <div>{{comment.likesCount}}</div>
                                         <img src="../app/img/comment.png" alt="comments"/>
                                         <a href="#" class="comment" ng-click="">Comment</a>
                                         <a href="" class="edit"  ng-click="showHideEditCommentInput()">Edit</a>
                                         <a href="" class="delete" ng-controller="deleteCommentController" ng-click="deleteComment(post.id, comment.id)">Delete</a>
-
+                                        <span>{{comment.date}}</span>
                                         <form class="EditPost">
                                             <div class="input-group" ng-if="checkedEditComment">
                                                 <div class="input-group-btn" ng-controller="editCommentController">
                                                     <button class="btn btn-default" ng-click="editComment(post.id, comment.id)"><i class="glyphicon glyphicon-share"></i></button>
                                                 </div>
-                                                <input type="text" class="form-control" placeholder="Edit a comment.." ng-model="commentEditMessage">
+                                                <input type="text" class="form-control" placeholder="Edit a comment.." ng-model="commentEditMessage" required>
                                             </div>
                                         </form>
+                                        <hr>
 
                                     </div>
                                 </li>

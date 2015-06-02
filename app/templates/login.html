@@ -1,15 +1,21 @@
-<div class="box">
-   <h2>Login</h2>
-   <p>
-       <label for="username">Username:</label>
-       <input type="text" id="username" ng-model="userData.username" required />
-   </p>
-   <p>
-       <label for="password">Password:</label>
-       <input type="password" id="password" ng-model="userData.password" required />
-   </p>
-   <p>
-       <a ng-click="login(userData)" class="button">Login</a>
-       <a href="#/register" class="link">Register</a>
-   <p>
+<div id="wrapper">
+    <div id="login" class="animate form">
+        <form  autocomplete="on">
+            <h1>Log in</h1>
+            <p>
+                <label for="username" class="uname" data-icon="u" > Your username </label>
+                <input id="username" name="username" ng-model="userData.username" required="required" type="text" placeholder="myusername"/>
+            </p>
+            <p>
+                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                <input id="password" name="password" ng-model="userData.password" required="required" type="password" placeholder="password" />
+            </p>
+            <p class="login button">
+                <input type="submit" ng-click="login(userData)" value="Login" />
+            </p>
+            <p class="change_link">
+                <a href="#/register" class="to_register">Register</a>
+            </p>
+        </form>
+    </div>
 </div>

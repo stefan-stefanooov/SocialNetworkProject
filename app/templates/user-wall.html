@@ -8,7 +8,7 @@
                 <div ng-if="isUserFriend" >
                     <input type='button' value='Friend' class='friend-request-button' disabled>
                 </div>
-                <div ng-if="isNotUserFriend">
+                <div ng-if="isNotUserFriend" ng-controller="FriendRequestController">
                     <input type='button' value='Friend Request' class='friend-request-button' ng-click="sendFriendRequest(wallOwner.username)">
                 </div>
 

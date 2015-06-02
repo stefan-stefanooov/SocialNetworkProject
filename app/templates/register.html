@@ -1,43 +1,51 @@
-<div class="box">
-    <h2>Register</h2>
-    <p>
-        <label for="username">Username:</label>
-        <input type="text" id="username" ng-model="userData.username" required />
-    </p>
-    <p>
-        <label for="password">Password:</label>
-        <input type="password" id="password" ng-model="userData.password" required />
-    </p>
-    <p>
-        <label for="confirmPassword">Confirm password:</label>
-        <input type="password" id="confirmPassword" ng-model="userData.confirmPassword" required />
-    </p>
-    <p>
-        <label for="name">Name:</label>
-        <input type="text" id="name" ng-model="userData.name" required />
-    </p>
-    <p>
-        <label for="email">Email:</label>
-        <input type="text" id="email" ng-model="userData.email" required />
-    </p>
-    <p>
-        <label>Gender:
-            <label>
-                <input type="radio" name="gender" value="male" ng-model="userData.gender">
-                Male
-            </label>
-            <label>
-                <input type="radio" name="gender" value="female" ng-model="userData.gender">
-                Female
-            </label>
-            <label>
-                <input type="radio" name="gender" value="other" ng-model="userData.gender">
-                Other
-            </label>
-        </label>
-    </p>
-    <p>
-        <a ng-click="register(userData)" class="button">Register</a>
-        <a href="#/login" class="link">Login</a>
-    <p>
+
+<div id="wrapper">
+    <div id="register" >
+        <form autocomplete="on">
+            <h1> Register </h1>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                <input id="usernamesignup" name="usernamesignup" ng-model="userData.username" required="required" type="text" placeholder="" />
+            </p>
+            <p>
+                <label for="usernamesignup" class="uname" data-icon="u">Your name</label>
+                <input id="usernamesignup" name="usernamesignup" ng-model="userData.name" required="required" type="text" placeholder="" />
+            </p>
+            <p>
+                <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+                <input id="emailsignup" ng-model="userData.email" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/>
+            </p>
+            <p>
+                <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                <input id="passwordsignup" name="passwordsignup" ng-model="userData.password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+            </p>
+            <p>
+                <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                <input id="passwordsignup_confirm" name="passwordsignup_confirm" ng-model="userData.confirmPassword" required="required" type="password" placeholder="eg. X8df!90EO"/>
+            </p>
+            <p>
+                <label>Gender:
+                    <label>
+                        <input type="radio" class="default-radio" name="gender" value="male" ng-model="userData.gender">
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female" ng-model="userData.gender">
+                        Female
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="other" ng-model="userData.gender">
+                        Other
+                    </label>
+                </label>
+            </p>
+            <p class="signin button">
+                <input type="submit" ng-click="register(userData)" value="Register"/>
+            </p>
+            <p class="change_link">
+                Already a member ?
+                <a href="#/login" class="to_register"> Go and log in </a>
+            </p>
+        </form>
+    </div>
 </div>

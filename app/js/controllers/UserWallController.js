@@ -69,6 +69,12 @@ app.controller('UserWallController',
           );
       };
 
+       $scope.clearSearch = function () {
+           console.log("sssss");
+            $("ul.results").hide();
+           $(".search-input-field").val("");
+       };
+
       $scope.getUserWallByPages();
    }
 );
